@@ -17,3 +17,24 @@ AFRAME.registerComponent('box', {
         el.setObject3D('box', cube);
     }
 });
+
+
+function load() {
+    var sceneEl = document.querySelector('a-scene');
+    for (i = 0; i < 10; i++) {
+        var entityEl = document.createElement('a-entity');
+        entityEl.setAttribute('position', {x: 0, y: 2 * i, z: -5});
+        entityEl.setAttribute('mixin', 'cube_material cube_rotate_1');
+        sceneEl.appendChild(entityEl);
+    }
+
+    for (i = -5; i < 6; i++) {
+        var entityEl = document.createElement('a-entity');
+        entityEl.setAttribute('position', {x: i * 2, y: 0, z: -5});
+        entityEl.setAttribute('mixin', 'cube_material cube_rotate_2 ');
+        sceneEl.appendChild(entityEl);
+    }
+}
+
+window.onload = load;
+

@@ -8,38 +8,18 @@
 <body>
 <a-scene inspector="url: https://aframe.io/releases/0.3.0/aframe-inspector.min.js">
     <!--<a-entity camera="userHeight: 1.6" look-controls></a-entity>-->
-
-    <a-entity box="scale:2; color: black"
-              position="0 0 -5">
-        <a-animation attribute="rotation"
-                     dur="2000"
-                     fill="none"
-                     easing="linear"
-                     repeat="indefinite"
-                     to="0 360 0"></a-animation>
-    </a-entity>
-    <a-entity box="scale:2; color: black"
-              position="0 2 -5">
-        <a-animation attribute="rotation"
-                     dur="2000"
-                     fill="none"
-                     easing="linear"
-                     repeat="indefinite"
-                     to="0 -360 0"></a-animation>
-    </a-entity>
-    <a-entity box="scale:2; color: black"
-              position="0 4 -5">
-        <a-animation attribute="rotation"
-                     dur="2000"
-                     fill="none"
-                     easing="linear"
-                     repeat="indefinite"
-                     to="0 360 0"></a-animation>
-
-    </a-entity>
-    <a-entity camera position="0 1.6 2" look-controls>
-
-    </a-entity>
+    <a-assets>
+        <a-mixin id="cube_material" box="scale:2; color: black"></a-mixin>
+        <a-mixin id="cube_scale" animation="property: scale; dur: 1000; from: 1 1 1; to: 1 2 1; loop:true"></a-mixin>
+        <a-mixin id="cube_rotate_1"
+                 animation="property: rotation; dur: 2000; easing:linear; loop:true; to: 180 360 0"></a-mixin>
+        <a-mixin id="cube_rotate_2"
+                 animation="property: rotation; dur: 2000; easing:linear; loop:true; to: 0 360 180"></a-mixin>
+    </a-assets>
+    <!--<a-entity position="0 0 -5" mixin="cube_material cube_rotate"></a-entity>-->
+    <!--<a-entity position="0 2 -5" mixin="cube_material cube_rotate"></a-entity>-->
+    <!--<a-entity position="0 4 -5" mixin="cube_material cube_rotate"></a-entity>-->
+    <a-entity camera position="0 8 20" look-controls></a-entity>
 
     <a-sky color="#ECECEC"></a-sky>
 </a-scene>
